@@ -36,6 +36,11 @@ if __name__ == '__main__':
     main(*sys.argv)
     resp = ReadFemResp()
     preg = nsfg.ReadFemPreg()
-    preg_map = nsfg.MakePregMap(resp)
+    preg_map = nsfg.MakePregMap(preg)
     print(resp.pregnum.value_counts())
+
+    for index, row in resp.iterrows():
+        if row['pregnum'] != len(preg_map[row['caseid']]):
+            print(row.caseid)
+
     import pdb; pdb.set_trace()
