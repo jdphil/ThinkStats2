@@ -42,13 +42,13 @@ def main():
 
     script: string script name
     """
+    RESP = read_fem_resp()
+    PREG = nsfg.ReadFemPreg()
+    PREG_MAP = nsfg.MakePregMap(PREG)
+    print(RESP.pregnum.value_counts())
     assert check_preg_num()
     print('%s: All tests passed.')
 
 
 if __name__ == '__main__':
-    RESP = read_fem_resp()
-    PREG = nsfg.ReadFemPreg()
-    PREG_MAP = nsfg.MakePregMap(PREG)
-    print(RESP.pregnum.value_counts())
     main(*sys.argv)
